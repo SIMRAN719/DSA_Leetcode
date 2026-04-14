@@ -1,0 +1,1 @@
+select department, employee, salary from (select d.name as Department, e.name as Employee, e.salary as Salary, rank() over(partition by e.departmentid order by e.salary desc) as rnk from employee e join department d on e.departmentid=d.id) t where rnk=1;
